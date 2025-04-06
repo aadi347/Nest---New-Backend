@@ -12,9 +12,12 @@ import adminRoutes from "./routes/adminRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import addNestRoutes from "./routes/AddNestRoute.js";
 
+
 dotenv.config();
 const app = express();
+
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(statusMonitor());
 
@@ -23,6 +26,7 @@ app.use(cors({
     origin: "http://localhost:5174",  
     credentials: true,
 }));
+
 
 
 app.use(passport.initialize());

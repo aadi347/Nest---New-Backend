@@ -17,7 +17,7 @@ const router = express.Router();
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: "blogImages", // Cloudinary folder name
+    folder: "property_images", // Cloudinary folder name
     format: async (req, file) => "png", // Convert all uploads to PNG
     public_id: (req, file) => file.originalname.split(".")[0], // Use filename as public_id
   },

@@ -4,12 +4,13 @@ import cloudinary from "../config/cloudinaryConfig.js";
 export const createProperty = async (req, res) => {
   try {
     const { flatType, rent, location, parking, utilities, houseName, deposit, carpetArea } = req.body;
-    
+    console.log(req.body);
+  
     if (!req.file) {
       return res.status(400).json({ success: false, message: "Image upload is required" });
     }
 
-    const uploadedImage = await cloudinary.uploader.upload(req.file.path, { folder: "properties" });
+    const uploadedImage = await cloudinary.uploader.upload(req.file.path, { folder: "Nest" });
 
     const property = new Property({
       flatType,
@@ -56,7 +57,7 @@ export const updatePropertyById = async (req, res) => {
     const updatedData = req.body;
 
     if (req.file) {
-      const uploadedImage = await cloudinary.uploader.upload(req.file.path, { folder: "properties" });
+      const uploadedImage = await cloudinary.uploader.upload(req.file.path, { folder: "Nest" });
       updatedData.imageUrl = uploadedImage.secure_url;
     }
 

@@ -5,13 +5,15 @@ import bcrypt from "bcrypt";
 export const userSignup = async (req, res) => {
   try {
     const user = new User(req.body);
-    console.log(user);
+    console.log("Received user data:", user);
     await user.save();
     res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
-    res.status(400).json({ error: "Signup failed" });
+    console.error("Signup error:", error);
+    res.status(400).json({ error: error.message || "Signup failed" });
   }
 };
+
 
 export const userLogin = async (req, res) => {
   const { email, password } = req.body;

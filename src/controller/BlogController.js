@@ -15,6 +15,8 @@ export const createBlog = async (req, res) => {
     console.log("Content:", content);
     // Validate required fields`
 
+    console.log(imageUrl);
+
     if (!title || !content || !category) {
       return res.status(400).json({ message: "Missing required fields" });
     }
@@ -23,7 +25,7 @@ export const createBlog = async (req, res) => {
       title,
       content,
       category,
-      seoTags: seoTags ? seoTags.split(",") : [], // Convert string to array if needed
+      seoTags, // Convert string to array if needed
       image: imageUrl, // Save image URL in MongoDB
     });
 
