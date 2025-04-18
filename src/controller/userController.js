@@ -33,3 +33,8 @@ export const userLogin = async (req, res) => {
 export const userDashboard = (req, res) => {
   res.json({ message: "User Dashboard", user: req.user });
 };
+
+export const UserLogOut = (req, res) => {
+  res.clearCookie("token");
+  res.status(200).json({ message: "Logged out successfully" });
+}
