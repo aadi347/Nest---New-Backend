@@ -15,7 +15,7 @@ const blogSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ["Technology", "Business", "Lifestyle", "Health"], // Define categories
+      // enum: ["Technology", "Business", "Lifestyle", "Health"], // Define categories
     },
     seoTags: {
       type: [String], // Array of strings for multiple SEO tags

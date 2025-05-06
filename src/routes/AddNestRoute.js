@@ -35,3 +35,5 @@ router.get("/carpetArea/:carpetArea", getPropertiesByCarpetArea);
 
 
 export default router;
+
+

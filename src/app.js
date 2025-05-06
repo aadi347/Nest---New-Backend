@@ -12,6 +12,7 @@ import adminRoutes from "./routes/adminRoutes.js";
 import blogRoutes from "./routes/blogRoutes.js";
 import addNestRoutes from "./routes/AddNestRoute.js";
 import contactUsRoutes from "./routes/contactUsRoute.js";
+import SearchRoute from "./routes/SearchConrollerRoutes.js";
 
 
 dotenv.config();
@@ -24,7 +25,7 @@ app.use(statusMonitor());
 
 
 app.use(cors({
-    origin: "http://localhost:5174",  
+    origin: "http://localhost:5175",  
     credentials: true,
 }));
 
@@ -38,6 +39,7 @@ app.use("/admins", adminRoutes);
 app.use("/api", blogRoutes);
 app.use("/addNest", addNestRoutes);
 app.use("/contactUs", contactUsRoutes); 
+app.use("/search", SearchRoute); 
 
 // http://localhost:3000/contactUs/contactAdmin
 
@@ -48,8 +50,8 @@ const mongodbURL = process.env.MONGODB_URI ||
 
 mongoose.connect(mongodbURL)
     .then(() => {
-        console.log("Connected to the database");
+        console.log("📀 Connected to the database");
         const port = process.env.PORT || 3000;
-        app.listen(port, () => console.log(`🖥️ ⚙️ Server is running on port: ${port}`));
+        app.listen(port, () => console.log(`🖥️ Server is running on port: ${port}`));
     })
     .catch((error) => console.error("MongoDB Connection Error:", error));
